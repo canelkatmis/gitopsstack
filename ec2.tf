@@ -13,9 +13,9 @@ resource "aws_instance" "Bastion" {
   }
 }
 resource "aws_eip" "BastionPublicIP" {
-    count    = "${var.bastion["count"]}"
-    instance = "${element(aws_instance.Bastion.*.id,count.index)}"
-    vpc      = true
+  count    = "${var.bastion["count"]}"
+  instance = "${element(aws_instance.Bastion.*.id,count.index)}"
+  vpc      = true
 }
 resource "aws_instance" "Master" {
   ami                     = "${var.master["ami"]}"
