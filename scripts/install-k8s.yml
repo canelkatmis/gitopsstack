@@ -1,0 +1,16 @@
+---
+- hosts: masters, workers
+  become: yes
+  roles:
+    - role: k8s-setup
+
+- hosts: masters
+  become: yes
+  roles:
+    - role: k8s-master-init
+
+- hosts: workers
+  become: yes
+  roles:
+    - role: k8s-worker-join
+

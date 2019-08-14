@@ -1,0 +1,23 @@
+---
+- name: Set ip forwarding
+  command: sysctl net.bridge.bridge-nf-call-iptables=1
+  
+- name: Generate cluster token
+  command: /usr/bin/kubeadm token generate
+  register: kubeadm_token_generate
+
+- set_fact: kubeadm_token={{ kubeadm_token_generate.stdout }}
+  when: kubeadm_token is not defined
+
+- name: Initialize cluster
+  shell: /usr/bin/kubeadm init --token {{ kubeadm_token }} --kubernetes-version $(kubeadm version -o short)  --ignore-preflight-errors=NumCPU
+
+- name: copy kubeadm file 
+  command: cp -f /etc/kubernetes/admin.conf $HOME/
+
+- name: chowner
+  shell: chown $(id -u):$(id -g) $HOME/admin.conf
+
+- name: Create cluster network
+  shell: export KUBECONFIG=$HOME/admin.conf; kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+

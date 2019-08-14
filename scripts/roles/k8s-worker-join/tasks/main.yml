@@ -1,0 +1,3 @@
+---
+- name: Join nodes
+  command: kubeadm join --token {{ kubeadm_token }} {{ hostvars[groups['masters'][0]].inventory_hostname }}:6443 --discovery-token-unsafe-skip-ca-verification

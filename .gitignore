@@ -1,0 +1,4 @@
+*.pem
+!.hidden
+scripts/ansible-hosts
+terraform.tfstate*
