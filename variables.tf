@@ -12,11 +12,11 @@ variable "vpc_cidr" {
 }
 variable "public_subnets" {
   description = "Public Subnet"
-  default     = [ "10.14.0.0/24", "10.14.1.0/24", "10.14.2.0/24" ]
+  default     = ["10.14.0.0/24", "10.14.1.0/24", "10.14.2.0/24"]
 }
 variable "private_subnets" {
   description = "Private Subnet"
-  default     = [ "10.14.10.0/24", "10.14.11.0/24", "10.14.12.0/24" ]
+  default     = ["10.14.10.0/24", "10.14.11.0/24", "10.14.12.0/24"]
 }
 variable "ec2_keypair" {
   description = "The name of keypair that you need while logging via SSH"
