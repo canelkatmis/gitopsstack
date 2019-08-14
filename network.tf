@@ -38,7 +38,7 @@ resource "aws_subnet" "PublicSubnet" {
 resource "aws_subnet" "PrivateSubnet" {
   vpc_id            = "${aws_vpc.VPC.id}"
   count             = "${length(var.private_subnets)}"
-  cidr_block        = "${element(var.private_subnets,count.index%length(var.private_subnets))}"
+  cidr_block        = "${element(var.private_subnets, count.index % length(var.private_subnets))}"
   availability_zone = "${element(data.aws_availability_zones.available.names, count.index)}"
   tags = {
     Name        = "subnet-private-${count.index}.${var.environment_tag}"
