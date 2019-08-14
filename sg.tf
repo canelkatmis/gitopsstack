@@ -1,6 +1,6 @@
 resource "aws_security_group" "bastion_sg" {
-  name        = "bastion_sg"
-  vpc_id      = "${aws_vpc.VPC.id}"
+  name   = "bastion_sg"
+  vpc_id = "${aws_vpc.VPC.id}"
   ingress {
     from_port   = 22
     to_port     = 22
@@ -17,18 +17,18 @@ resource "aws_security_group" "bastion_sg" {
     create_before_destroy = true
   }
   tags = {
-    Name            = "bastion_sg.${var.environment_tag}"
-    Environment     = "${var.environment_tag}"
+    Name        = "bastion_sg.${var.environment_tag}"
+    Environment = "${var.environment_tag}"
   }
 }
 resource "aws_security_group" "stack_sg" {
-  name        = "stack_sg"
-  vpc_id      = "${aws_vpc.VPC.id}"
+  name   = "stack_sg"
+  vpc_id = "${aws_vpc.VPC.id}"
   ingress {
-    from_port       = 0
-    to_port         = 0
-    protocol        = "-1"
-    self            = true
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    self      = true
   }
   ingress {
     from_port       = 0
@@ -58,8 +58,8 @@ resource "aws_security_group" "stack_sg" {
     create_before_destroy = true
   }
   tags = {
-    Name            = "stack_sg.${var.environment_tag}"
-    Environment     = "${var.environment_tag}"
+    Name        = "stack_sg.${var.environment_tag}"
+    Environment = "${var.environment_tag}"
   }
 }
 # resource "aws_security_group" "master_alb_sg" {

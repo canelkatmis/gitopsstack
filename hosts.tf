@@ -1,10 +1,10 @@
 resource "local_file" "render_hosts" {
-  content = templatefile( "scripts/ansible-hosts.tmpl", {
+  content = templatefile("scripts/ansible-hosts.tmpl", {
     bastion_hosts = "${join("\n", "${aws_instance.Bastion.*.private_ip}")}"
-    master_hosts = "${join("\n", "${aws_instance.Master.*.private_ip}")}"
-    worker_hosts = "${join("\n", "${aws_instance.Worker.*.private_ip}")}"
-    ec2_keypair = "${var.ec2_keypair}"
-    ec2_username = "${var.ec2_username}"
+    master_hosts  = "${join("\n", "${aws_instance.Master.*.private_ip}")}"
+    worker_hosts  = "${join("\n", "${aws_instance.Worker.*.private_ip}")}"
+    ec2_keypair   = "${var.ec2_keypair}"
+    ec2_username  = "${var.ec2_username}"
   })
   filename = "${path.cwd}/scripts/ansible-hosts"
 }

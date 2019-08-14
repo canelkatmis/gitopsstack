@@ -8,14 +8,14 @@ resource "aws_instance" "Bastion" {
   vpc_security_group_ids  = ["${aws_security_group.bastion_sg.id}"]
   #user_data               = "${file("${path.cwd}/install-ansible.sh")}"
   tags = {
-    Name                  = "bastion-${count.index}.${var.environment_tag}"
-    Environment           = "${var.environment_tag}"
+    Name        = "bastion-${count.index}.${var.environment_tag}"
+    Environment = "${var.environment_tag}"
   }
 }
 resource "aws_eip" "BastionPublicIP" {
     count    = "${var.bastion["count"]}"
     instance = "${element(aws_instance.Bastion.*.id,count.index)}"
-    vpc = true
+    vpc      = true
 }
 resource "aws_instance" "Master" {
   ami                     = "${var.master["ami"]}"
@@ -26,8 +26,8 @@ resource "aws_instance" "Master" {
   subnet_id               = "${element(aws_subnet.PrivateSubnet.*.id, count.index)}"
   vpc_security_group_ids  = ["${aws_security_group.stack_sg.id}"]
   tags = {
-    Name                  = "master-${count.index}.${var.environment_tag}"
-    Environment           = "${var.environment_tag}"
+    Name        = "master-${count.index}.${var.environment_tag}"
+    Environment = "${var.environment_tag}"
   }
 }
 resource "aws_instance" "Worker" {
