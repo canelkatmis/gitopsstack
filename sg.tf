@@ -30,18 +30,18 @@ resource "aws_security_group" "stack_sg" {
     protocol  = "-1"
     self      = true
   }
-#  ingress {
-#    from_port       = 0
-#    to_port         = 0
-#    protocol        = "-1"
-#    security_groups = ["${aws_security_group.master_alb_sg.id}"]
-#  }
-#  ingress {
-#    from_port       = 0
-#    to_port         = 0
-#    protocol        = "-1"
-#    security_groups = ["${aws_security_group.worker_alb_sg.id}"]
-#  }
+  #  ingress {
+  #    from_port       = 0
+  #    to_port         = 0
+  #    protocol        = "-1"
+  #    security_groups = ["${aws_security_group.master_alb_sg.id}"]
+  #  }
+  #  ingress {
+  #    from_port       = 0
+  #    to_port         = 0
+  #    protocol        = "-1"
+  #    security_groups = ["${aws_security_group.worker_alb_sg.id}"]
+  #  }
   ingress {
     from_port       = 0
     to_port         = 0
