@@ -28,22 +28,22 @@ variable "ec2_username" {
 }
 variable "bastion" {
   default = {
-    count     = "1"
-    ami       = "ami-0085d4f8878cddc81" #ubuntu16
-    type      = "t2.micro"
+    count = "1"
+    ami   = "ami-0085d4f8878cddc81" #ubuntu16
+    type  = "t2.micro"
   }
 }
 variable "master" {
   default = {
-    count     = "1"
-    ami       = "ami-0085d4f8878cddc81"
-    type      = "t2.micro"
+    count = "1"
+    ami   = "ami-0085d4f8878cddc81"
+    type  = "t2.micro"
   }
 }
 variable "worker" {
   default = {
-    count     = "3"
-    ami       = "ami-0085d4f8878cddc81"
-    type      = "t2.micro"
+    count = "3"
+    ami   = "ami-0085d4f8878cddc81"
+    type  = "t2.micro"
   }
 }
