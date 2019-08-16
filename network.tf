@@ -84,9 +84,9 @@ resource "aws_route_table" "RT_NAT" {
   vpc_id = "${aws_vpc.VPC.id}"
   count  = "${length(var.private_subnets)}"
   route {
-      cidr_block     = "0.0.0.0/0"
-      nat_gateway_id = "${element(aws_nat_gateway.NatGW.*.id, count.index)}"
-    }
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = "${element(aws_nat_gateway.NatGW.*.id, count.index)}"
+  }
   tags = {
     Name        = "rt-nat-${count.index}.${var.environment_tag}"
     Environment = "${var.environment_tag}"
