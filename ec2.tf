@@ -39,7 +39,7 @@ resource "aws_instance" "Worker" {
   subnet_id               = "${element(aws_subnet.PrivateSubnet.*.id, count.index)}"
   vpc_security_group_ids  = ["${aws_security_group.stack_sg.id}"]
   tags = {
-    Name                  = "worker-${count.index}.${var.environment_tag}"
-    Environment           = "${var.environment_tag}"
+    Name        = "worker-${count.index}.${var.environment_tag}"
+    Environment = "${var.environment_tag}"
   }
 }
