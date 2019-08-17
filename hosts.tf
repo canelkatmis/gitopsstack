@@ -63,4 +63,17 @@ resource "null_resource" "after_rendering" {
       "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i /home/ubuntu/ansible-hosts install-k8s.yml"
     ]
   }
+
+  provisioner "file" {
+    source      = "scripts/install-jenkins.yml"
+    destination = "/home/ubuntu/install-jenkins.yml"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/install-jenkins.yml",
+      "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i /home/ubuntu/ansible-hosts install-jenkins.yml"
+    ]
+  }
+
 }
