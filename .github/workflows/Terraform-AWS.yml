@@ -36,6 +36,14 @@ jobs:
 
     steps:
 
+      - name: debug
+        run:
+          pwd
+          ls -lart
+          who
+          tree
+          ls -lart ../
+
       - name: terraform-init
         uses: hashicorp/terraform-github-actions/init@v0.3.5
         env:
