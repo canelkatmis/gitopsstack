@@ -37,7 +37,7 @@ jobs:
     steps:
 
       - name: debug
-        run:
+        run: |
           pwd
           ls -lart
           who
