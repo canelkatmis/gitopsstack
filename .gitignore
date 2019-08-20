@@ -1,4 +1,5 @@
 *.pem
-!.hidden
+.terraform
 scripts/ansible-hosts
-terraform.tfstate*
+*.tfstate*
+*.exe
