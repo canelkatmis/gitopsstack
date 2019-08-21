@@ -6,13 +6,10 @@ on:
     - master
 
 jobs:
-
-  Terraform-steps:
-
+  Apply-to-AWS:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: filter-to-pr-open-synced
         uses: actions/bin/filter@master
         with:
