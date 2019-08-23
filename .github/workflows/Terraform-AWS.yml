@@ -49,6 +49,16 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+      - name: terraform-apply
+        uses: hashicorp/terraform-github-actions/apply@v0.3.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: ./Test
+          TF_ACTION_WORKSPACE : "default"
+          TF_ACTION_TFE_TOKEN: ${{ secrets.TF_ACTION_TFE_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
       - name: terraform-destroy
         uses: canelkatmis/terraform-github-actions/destroy@master
         env:
