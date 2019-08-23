@@ -1,7 +1,7 @@
 name: Terraform-AWS
 
 on:
-  pull_request:
+  push:
     branches:
     - master
 
