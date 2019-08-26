@@ -1,7 +1,7 @@
 name: Terraform-Apply
 
 on:
-  pull_request.closed:
+  pull_request:
     branches:
     - master
 
