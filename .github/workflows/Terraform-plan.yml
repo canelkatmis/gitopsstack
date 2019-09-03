@@ -13,7 +13,7 @@ jobs:
       - name: filter-to-pr-open-synced
         uses: actions/bin/filter@master
         with:
-          args: action 'opened|synchronize'
+          args: action 'merged true'
 
       - name: pull
         uses: actions/checkout@master
