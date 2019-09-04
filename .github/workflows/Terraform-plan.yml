@@ -4,17 +4,17 @@ on:
   push:
     branches:
     - master
+    paths:
+    - '*'
+    - '!Test/*'
+    - '!.github/*'
+    #- '!*.md'
 
 jobs:
   Plan-for-AWS:
     runs-on: ubuntu-latest
 
     steps:
-      - name: filter-to-pr-open-synced
-        uses: actions/bin/filter@master
-        with:
-          args: action 'merged true'
-
       - name: pull
         uses: actions/checkout@master
 
