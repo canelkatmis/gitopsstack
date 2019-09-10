@@ -1,25 +1,46 @@
 name: Terraform-Apply
 
 on:
-  pull_request:
+  push:
     branches:
     - master
+    paths:
+    - '*'
+    - '!Test/*'
+    - '!.github/*'
+    #- '!*.md'
 
 jobs:
-  Apply-to-AWS:
+  Plan-for-AWS:
     runs-on: ubuntu-latest
 
     steps:
-      - name: filter-to-pr-merged
-        uses: actions/bin/filter@master
-        with:
-          args: action 'merged true'
-
       - name: pull
         uses: actions/checkout@master
 
-      - name: terraform-apply
-        uses: hashicorp/terraform-github-actions/apply@v0.3.5
+      - name: terraform-format
+        uses: hashicorp/terraform-github-actions/fmt@v0.3.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: ./Test
+
+      - name: terraform-init
+        uses: hashicorp/terraform-github-actions/init@v0.3.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: ./Test
+          TF_ACTION_TFE_TOKEN: ${{ secrets.TF_ACTION_TFE_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: terraform-validate
+        uses: hashicorp/terraform-github-actions/validate@v0.3.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: ./Test
+
+      - name: terraform-plan
+        uses: canelkatmis/terraform-github-actions/plan@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
@@ -28,12 +49,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: terraform-destroy
-        uses: canelkatmis/terraform-github-actions/destroy@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TF_ACTION_WORKING_DIR: ./Test
-          TF_ACTION_WORKSPACE : "default"
-          TF_ACTION_TFE_TOKEN: ${{ secrets.TF_ACTION_TFE_TOKEN }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+
