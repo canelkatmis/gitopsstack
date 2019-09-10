@@ -15,11 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: filter-to-pr-merged
-        uses: actions/bin/filter@master
-        with:
-          args: action 'opened|synchronize'
-
       - name: pull
         uses: actions/checkout@master
 
