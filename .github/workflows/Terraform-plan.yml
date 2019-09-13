@@ -7,6 +7,7 @@ on:
     - env_*
     paths:
     - '*'
+    - 'Test/*'
     - '!.github/*'
     #- '!*.md'
     
