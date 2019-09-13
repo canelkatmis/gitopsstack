@@ -3,8 +3,8 @@ name: Terraform-Plan
 on:
   pull_request:
     branches:
-    - master
-    #- env_*
+    #- master
+    - env_*
     paths:
     - '*'
     - '!Test/*'
