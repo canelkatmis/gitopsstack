@@ -10,10 +10,6 @@ on:
     - '!.github/*'
     #- '!*.md'
 
-  create:
-    branches:
-    - env_*
-
 jobs:
   Apply-to-AWS:
     runs-on: ubuntu-latest
