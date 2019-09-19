@@ -1,7 +1,7 @@
 name: Terraform-Apply
 
 on:
-  push:
+  pull_request:
     branches:
     - env_*
     paths:
@@ -9,8 +9,18 @@ on:
     - 'Test/*'
     - '!.github/*'
     #- '!*.md'
+    types:
+      - closed
 
 jobs:
+  Filter:
+    name: filter if it is merged
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/bin/filter@master
+      with:
+        args: "merged true"
+
   Apply-to-AWS:
     runs-on: ubuntu-latest
 
