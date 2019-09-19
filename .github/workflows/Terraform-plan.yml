@@ -41,7 +41,7 @@ jobs:
           TF_ACTION_WORKING_DIR: ./Test
 
       - name: terraform-plan
-        uses: canelkatmis/terraform-github-actions/plan@master
+        uses: hashicorp/terraform-github-actions/plan@v0.3.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
