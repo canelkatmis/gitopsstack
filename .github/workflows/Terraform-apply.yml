@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@master
         
       - name: terraform-init
-        uses: hashicorp/terraform-github-actions/init@v0.3.5
+        uses: hashicorp/terraform-github-actions/init@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
@@ -39,7 +39,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           
       - name: terraform-apply
-        uses: hashicorp/terraform-github-actions/apply@v0.3.5
+        uses: hashicorp/terraform-github-actions/apply@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
