@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@master
         
       - name: terraform-init
-        uses: hashicorp/terraform-github-actions/init@master
+        uses: canelkatmis/terraform-github-actions/init@v0.5.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
@@ -31,7 +31,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           
       - name: terraform-apply
-        uses: hashicorp/terraform-github-actions/apply@master
+        uses: canelkatmis/terraform-github-actions/apply@v0.5.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
@@ -41,7 +41,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: terraform-destroy
-        uses: canelkatmis/terraform-github-actions/destroy@master
+        uses: canelkatmis/terraform-github-actions/destroy@v0.5.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
