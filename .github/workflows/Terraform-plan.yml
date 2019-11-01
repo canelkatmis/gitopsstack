@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: terraform-format
-        uses: canelkatmis/terraform-github-actions/fmt@$TF_ACTION_VERSION
+        uses: canelkatmis/terraform-github-actions/fmt@${{ steps.env.outputs.TF_ACTION_VERSION }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
