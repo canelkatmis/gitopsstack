@@ -14,19 +14,20 @@ on:
 jobs:
   Plan-for-AWS:
     runs-on: ubuntu-latest
-
+    env:
+      TF_ACTION_VERSION: v0.5.0
     steps:
       - name: pull
         uses: actions/checkout@master
 
       - name: terraform-format
-        uses: hashicorp/terraform-github-actions/fmt@master
+        uses: canelkatmis/terraform-github-actions/fmt@$TF_ACTION_VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
 
       - name: terraform-init
-        uses: hashicorp/terraform-github-actions/init@master
+        uses: canelkatmis/terraform-github-actions/init@$TF_ACTION_VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
@@ -35,13 +36,13 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: terraform-validate
-        uses: hashicorp/terraform-github-actions/validate@master
+        uses: canelkatmis/terraform-github-actions/validate@$TF_ACTION_VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
 
       - name: terraform-plan
-        uses: hashicorp/terraform-github-actions/plan@master
+        uses: canelkatmis/terraform-github-actions/plan@$TF_ACTION_VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
