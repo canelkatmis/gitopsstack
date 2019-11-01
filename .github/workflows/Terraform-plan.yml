@@ -21,13 +21,13 @@ jobs:
         uses: actions/checkout@master
 
       - name: terraform-format
-        uses: canelkatmis/terraform-github-actions/fmt@$TF_ACTION_VERSION
+        uses: canelkatmis/terraform-github-actions/fmt@${{ TF_ACTION_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
 
       - name: terraform-init
-        uses: canelkatmis/terraform-github-actions/init@$TF_ACTION_VERSION
+        uses: canelkatmis/terraform-github-actions/init@${{ TF_ACTION_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
@@ -36,13 +36,13 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: terraform-validate
-        uses: canelkatmis/terraform-github-actions/validate@$TF_ACTION_VERSION
+        uses: canelkatmis/terraform-github-actions/validate@${{ TF_ACTION_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
 
       - name: terraform-plan
-        uses: canelkatmis/terraform-github-actions/plan@$TF_ACTION_VERSION
+        uses: canelkatmis/terraform-github-actions/plan@${{ TF_ACTION_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TF_ACTION_WORKING_DIR: ./Test
