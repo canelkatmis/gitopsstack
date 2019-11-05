@@ -10,7 +10,9 @@ on:
     - 'Test/*'
     - '!.github/*'
     #- '!*.md'
-    
+env:
+  TF_ACTIONS_VERSION: v0.5.0
+   
 jobs:
   Plan-for-AWS:
     runs-on: ubuntu-latest
@@ -19,7 +21,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: terraform-format
-        uses: canelkatmis/terraform-github-actions@v0.5.0
+        uses: canelkatmis/terraform-github-actions@${{ env.TF_ACTIONS_VERSION }}
         with:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'fmt'
