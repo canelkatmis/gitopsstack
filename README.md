@@ -1,2 +1,3 @@
 # gitopsstack
-create a k8s stack via github actions
+
+Create a Kubernetes stack on AWS via Github Actions and Terraform Cloud
