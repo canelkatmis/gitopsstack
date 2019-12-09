@@ -22,7 +22,7 @@ jobs:
 
     steps:     
       - name: pull
-        uses: actions/checkout@master
+        uses: actions/checkout@v1
         
       - name: terraform-init
         uses: canelkatmis/terraform-github-actions@v0.5.0
