@@ -20,4 +20,3 @@ resource "aws_vpc" "VPC" {
     Name = "cane.test.vpc"
   }
 }
-
