@@ -7,7 +7,7 @@ terraform {
     hostname     = "app.terraform.io"
     organization = "canelkatmis"
     workspaces {
-      name = "canetest"
+      name = "canextest"
     }
   }
 }
@@ -17,7 +17,7 @@ resource "aws_vpc" "VPC" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
-    Name = "cane.test.vpc"
+    Name = "canex.test.vpc"
   }
 }
 
